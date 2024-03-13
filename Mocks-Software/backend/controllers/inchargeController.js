@@ -18,7 +18,7 @@ const allocateStudent = asyncHandler(async(req,res)=>{
     }
 
     const dbCount = configData.interviewCount;
-    console.log(dbCount)
+    // console.log(dbCount)
     let {studentregNo,interviewer,interviewerEmail} = req.body;
     let currentIncharge, interviewerDets;
 
@@ -28,7 +28,7 @@ const allocateStudent = asyncHandler(async(req,res)=>{
     }
     else{
         interviewerDets = await User.findOne({email:interviewerEmail})
-        console.log(interviewerDets)
+        // console.log(interviewerDets)
         if(!interviewerDets && req.user.role==='Admin' ){
             res.status(404)
             throw new Error('invalid email')
@@ -50,16 +50,17 @@ const allocateStudent = asyncHandler(async(req,res)=>{
     // console.log({interviewer,currentIncharge,currentStudent})
     const interviewExists = await Interview.findOne({$and:[{student:currentStudent._id},{interviewer:interviewer}]})
     if(interviewExists){
-        if(interviewExists.status==='Cancelled' && currentStudent.interviewCount<dbCount ){
+        // console.log(interviewExists)
+        // console.log({got:currentStudent.interviewCount})
 
+        if(interviewExists.status==='Cancelled' && currentStudent.interviewCount<dbCount ){
             const value = {$set:{status:'Pending'}}
-            const value1 = {$inc:{interviewCount:currentStudent.interviewCount+1}}
+            const value1 = {$inc:{interviewCount:1}}
 
             await Interview.updateOne({_id:interviewExists._id},value)
             await Student.updateOne({_id:currentStudent._id},value1)
-
-            const updatedInterview = await Interview.findOne({_id:interviewExists._id})
             const updatedStudent = await Student.findOne({_id:currentStudent._id})
+            const updatedInterview = await Interview.findOne({_id:interviewExists._id})
 
             if(updatedInterview && updatedStudent){
                 // console.log(updatedStudent)
@@ -77,15 +78,23 @@ const allocateStudent = asyncHandler(async(req,res)=>{
             }
         }
         else{
-            res.status(402)
-            throw new Error('allocations exists')
+            if(currentStudent.interviewCount<dbCount){
+                res.status(402)
+                throw new Error('allocation exists ')
+            }
+            else{
+                res.status(402)
+                throw new Error(' maximum interviews allocated ')
+            }
+           
         }
     }
     else{
         // console.log(currentStudent.interviewCount+1)
         if(currentStudent.interviewCount<dbCount){
-
-            const value = {$set:{interviewCount:currentStudent.interviewCount+1}}
+            let count = currentStudent.interviewCount;
+            count++;
+            const value = {$set:{interviewCount:count}}
             await Student.updateOne({_id:currentStudent._id},value)
 
             const updatedStudent = await Student.findOne({_id:currentStudent._id})

@@ -38,10 +38,17 @@ function ReportGenerator({interviewDetails,interviewer,onClose}) {
                         alt='forese-logo'
                         src={forese} />
                     </div>
+                    <div className='pl-[9%]'>
+                        <h2 className='font-bold uppercase'> Online Mocks Report '24</h2>
+                    </div>
+                    <div className='text-white'>
+                    <h2> Online </h2>
+
+                    </div>
                </nav>
                <div className='mx-2'>
                     <div className='text-center py-2 grid grid-cols-1 border'>
-                        <div className='font-bold'>PERSONAL <span className='pl-2 text-white '>Hi</span>REPORT</div>
+                        <div className='font-bold px-2'>PERSONAL <span className='pl-2 text-white '>Hi</span>REPORT</div>
                     </div>
                 </div>
                 <div className='mx-2'>
@@ -49,38 +56,39 @@ function ReportGenerator({interviewDetails,interviewer,onClose}) {
                         <div className='font-bold'>Candidate Name :</div>
                         <div className='font-semibold border-r-2'>{interviewDetails.student.name}</div>
                         <div className='font-bold border-l-2'>Date : </div>
-                        <div className='font-semibold'>{`17/03/2024`}</div>
+                        <div className='font-semibold'>{`17 / 03 / 2024`}</div>
                     </div>
                 </div>
-                <div className='mx-2'>
-                    <div className=' text-center py-2 grid grid-cols-4 border'>
-                        <div className='font-bold'>Interviewer Name :</div>
-                        <div className='font-semibold border-r-2'>{interviewer.name}</div>
-                        <div className='font-bold border-l-2'>Interviewer Company :</div>
-                        <div className='font-semibold'>{interviewer.companyName}</div>
-                    </div>
-                </div>
+               
 
                 <div className='mx-2'>
                     <div className='text-center py-2 grid grid-cols-4 border'>
                         <div className='font-bold'>Register Number : </div>
                         <div className='font-semibold border-r-2'>{interviewDetails.student.regNo}</div>
-                        <div className='font-bold border-l-2'>Department & Secction :</div>
+                        <div className='font-bold border-l-2'>Department & Section :</div>
                         <div className='font-semibold '>{`${interviewDetails.student.dept} - ${interviewDetails.student.section}`}</div>
+                    </div>
+                </div>
+                <div className='mx-2'>
+                    <div className=' text-center py-2 grid grid-cols-4 border'>
+                        <div className='font-bold'>Interviewer's Name :</div>
+                        <div className='font-semibold border-r-2'>{interviewer.name}</div>
+                        <div className='font-bold border-l-2'>Interviewer's Company :</div>
+                        <div className='font-semibold'>{interviewer.companyName}</div>
                     </div>
                 </div>
 
                 <div className='mx-2 my-[2%]'>
-                        <table className='cursor-default w-full shadow-md border'>
+                        <table className='cursor-default shadow-md border w-[80%]'>
                             {/* <caption className="text-xl font-bold underline">Interview Scores</caption> */}
                             <thead className=''>
                                 <tr className='p-2 text-lg font-semibold  '>
                                     <th className='p-3 tracking-wide text-left border'>Professional Appearance</th>
-                                    <th className='p-3 tracking-wide text-left border'>Managerial Aptitude</th>
-                                    <th className='p-3 tracking-wide text-left border'> General Intelligence</th>
-                                    <th className='p-3 tracking-wide text-left border'>Techical Knowledge</th>
-                                    <th className='p-3 tracking-wide text-left border'> Communication Skills </th>
-                                    <th className='p-3 tracking-wide text-left border'> Self-Confidence </th>
+                                    <th className='p-3 tracking-wide text-left border'>Managerial Competence</th>
+                                    <th className='p-3 tracking-wide text-left border'>General Intelligence</th>
+                                    <th className='p-3 tracking-wide text-left border'>Technical Knowledge</th>
+                                    <th className='p-3 tracking-wide text-left border'>Communication Skills</th>
+                                    <th className='p-3 tracking-wide text-left border'>Self-Confidence </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -97,13 +105,12 @@ function ReportGenerator({interviewDetails,interviewer,onClose}) {
                         </table>
                     </div>
                     <div className='mx-2'>
-                    <div className='px-[2%] text-center py-[4%] grid grid-cols-2 border'>
+                    <div className='px-[2%] text-center py-[2%] grid grid-cols-2 border'>
                         <div className='font-bold text-left px-2'>Comments : </div>
                         <div className=' text-left font-semibold '>{interviewDetails.comments}</div>
                     </div>
                 </div>
             </div> 
-
             )
         }
            

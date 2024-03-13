@@ -110,8 +110,8 @@ function AdminUsers() {
                                 <thead className=''>
                                     <tr key={1} className='py-[5%] border bg-lgray  text-md font-semibold '>
 
-                                        <th className='p-2 tracking-wide text-center border border-gray'>Name</th>
-                                        <th className='p-2 tracking-wide text-center border border-gray'>Email</th>
+                                        <th className='p-2 tracking-wide text-center border border-gray'>Incharge </th>
+                                        <th className='p-2 tracking-wide text-center border border-gray'>Incharge's Email</th>
                                         <th className='p-2 tracking-wide text-center border border-gray'>Interviewer</th>
                                         <th className='p-2 tracking-wide text-center border border-gray'>Interviewer's Company</th>
                                     </tr>
@@ -141,10 +141,10 @@ function AdminUsers() {
 						<thead className=''>
 							<tr key={1} className='py-[5%] border bg-lgray  text-md font-semibold '>
 
-								<th className='p-2 tracking-wide text-center border border-gray'>Name</th>
-								<th className='p-2 tracking-wide text-center border border-gray'>Company</th>
+								<th className='p-2 tracking-wide text-center border border-gray'>Interviewer</th>
+								<th className='p-2 tracking-wide text-center border border-gray'>Interviewer's Company</th>
 								<th className='p-2 tracking-wide text-center border border-gray'>Incharge</th>
-								<th className='p-2 tracking-wide text-center border border-gray'>View</th>
+								<th className='p-2 tracking-wide text-center border border-gray'>Action</th>
 							</tr>
 						</thead>
 						<tbody className='divide-y divide font-medium'>

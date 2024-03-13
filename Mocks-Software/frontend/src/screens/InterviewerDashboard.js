@@ -171,12 +171,17 @@ function InterviewerDashboard() {
             <DashNavbar/>
             <div>
                 <div className="mx-[5%]">
-                    <table className=' mt-[3%] mx-6 text-xl'>
-                        <tr>
-                            <td><div className='font-medium pr-2'>Your Incharge :</div></td>
-                            <td><div className='font-bold hover:underline hover:cursor-pointer  '>{inchargeDetails?inchargeDetails.name:''}</div></td>
-                        </tr>
-                    </table>
+                    <div className='flex justify-between'>
+                        <table className=' mt-[3%] mx-6 text-xl'>
+                            <tr>
+                                <td><div className='font-medium pr-2'>Your Incharge :</div></td>
+                                <td><div className='font-bold hover:underline hover:cursor-pointer '>{inchargeDetails?inchargeDetails.name:''}</div></td>
+                            </tr>
+                            
+                        </table>
+                        <button className=' p-2 mt-[4%] bg-blue text-white'><a href='https://app.grammarly.com/ddocs/2394761984'
+                         target='_blank'>Give us your feedback</a></button>
+                    </div>
                     <hr className='my-[2%]'/>
                     <div className='mx-[2&] flex justify-end'>
                     <div className=''>

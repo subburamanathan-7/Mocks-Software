@@ -73,7 +73,7 @@ function ConnectDialog() {
                         <h3 className=' font-base text-xl'>Assign/Discharge Slot</h3>
                         <hr className='my-[2%]'/>
                         <div className='flex justify-center my-[2%]'>
-                            <form className=' w-[70%] relative rounded-md overflow-hidden '>
+                            <div className=' w-[70%] relative rounded-md overflow-hidden '>
                                 <div className=' px-[3%] py-[0.5%] my-2 flex items-center justify-center bg-opacity-75 rounded-md'>
                                        
                                     <label className='themeSwitcherTwo shadow-card relative inline-flex cursor-pointer select-none items-center justify-center rounded-md  p-1 rounded-full bg-color2 bg-opacity-5'>
@@ -139,7 +139,7 @@ function ConnectDialog() {
                                       {isChecked?'Discharge':'Assign'}
                                     </button>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
