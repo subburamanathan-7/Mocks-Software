@@ -40,7 +40,7 @@ function AdminLogin() {
     }
     const handleSubmit = (e)=>{
         e.preventDefault();
-        console.log(formData);
+        // console.log(formData);
         setButtonState(true)
         adminLoginMutation.mutate({
             email:formData.email,

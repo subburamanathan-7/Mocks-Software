@@ -5,8 +5,8 @@ function ReportGenerator({interviewDetails,interviewer,onClose}) {
     const forese = require('../assets/forese.png')
     const [count,setCount] = useState(0)
 
-    console.log(interviewDetails)
-    console.log(interviewer)
+    // console.log(interviewDetails)
+    // console.log(interviewer)
 
     const generatePDF = ()=>{
         let doc = new jsPDF('l','pt','a4')
@@ -54,7 +54,7 @@ function ReportGenerator({interviewDetails,interviewer,onClose}) {
                 <div className='mx-2'>
                     <div className='text-center py-2 grid grid-cols-4 border'>
                         <div className='font-bold'>Candidate Name :</div>
-                        <div className='font-semibold border-r-2'>{interviewDetails.student.name}</div>
+                        <div className='font-semibold border-r-2 uppercase'>{interviewDetails.student.name}</div>
                         <div className='font-bold border-l-2'>Date : </div>
                         <div className='font-semibold'>{`17 / 03 / 2024`}</div>
                     </div>
@@ -72,7 +72,7 @@ function ReportGenerator({interviewDetails,interviewer,onClose}) {
                 <div className='mx-2'>
                     <div className=' text-center py-2 grid grid-cols-4 border'>
                         <div className='font-bold'>Interviewer's Name :</div>
-                        <div className='font-semibold border-r-2'>{interviewer.name}</div>
+                        <div className='font-semibold border-r-2 uppercase'>{interviewer.name}</div>
                         <div className='font-bold border-l-2'>Interviewer's Company :</div>
                         <div className='font-semibold'>{interviewer.companyName}</div>
                     </div>

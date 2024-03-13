@@ -1,22 +1,24 @@
 import { useState, useEffect } from 'react';
 import{useQuery, useMutation, useQueryClient} from '@tanstack/react-query'
 import Modal from './Modal';
+import AModal from './AModal';
+
 
 import DashNavbar from "./DashNavbar";
 import AddStudentDialog from './AddStudentDialog';
 import { listStudents } from '../features/access/AccessServices';
 import {listStudentsByDept} from '../features/admin/AdminServices';
 import { useNavigate } from 'react-router-dom';
+import AddResumeModal from './AddResumeModal';
 
 function AdminStudents() {
 	let content;
 	const navigate = useNavigate();
 
-	
-
 	const[showAddStudentModal, setShowAddStudentModal] =useState(false);
 	const [currentStudent,setCurrentStudent] = useState(false);
 	const [currentDepartment,setCurrentDepartment] = useState('');
+	const [showResumeModal, setShowResumeModal] = useState(false)
 
 
 	useEffect(()=>{
@@ -56,8 +58,8 @@ function AdminStudents() {
 						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.regNo}</td>
 						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.name}</td>
 						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.dept}</td>
-						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.aptitude_total}</td>
-						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.gd_total}</td>
+						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.aptitude_total===-1?('AB'):(student.aptitude_total+'/50')}</td>
+						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.gd_total===-1?('AB'):(student.gd_total+'/50')}</td>
 						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.interviewCount}</td>
 						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap'>
 							<button  onClick={()=>{navigate(`/adashboard/students/student/:${student._id}`)}}
@@ -72,9 +74,9 @@ function AdminStudents() {
 					
 						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.regNo}</td>
 						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.name}</td>
-						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.dept}</td>
-						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.aptitude_total}</td>
-						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.gd_total}</td>
+						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.dept}</td> 
+						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.aptitude_total===-1?('AB'):(student.aptitude_total+'/50')}</td>
+						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.gd_total===-1?('AB'):(student.gd_total+'/50')}</td>
 						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.interviewCount}</td>
 						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap'>
 							<button onClick={()=>{navigate(`/adashboard/students/student/:${student._id}`)}}
@@ -93,6 +95,9 @@ function AdminStudents() {
 						<button className='bg-blue text-white p-2' onClick={()=>{
 							setShowAddStudentModal(true)
 						}}>Add Student</button>
+						 <button className='bg-blue text-white px-4 py-2' onClick={()=>{
+                            setShowResumeModal(true)
+						}}>Add Resumes</button>
 						<div className=''>
 							<select name="dept" id="dept" className= {`py-1 px-4 border border-blue rounded`}
 								value={currentDepartment} onChange={handleChange}
@@ -160,6 +165,10 @@ function AdminStudents() {
 			<Modal isVisible={showAddStudentModal} onClose={()=>setShowAddStudentModal(false)}>
 				<AddStudentDialog/>
 			</Modal>
+
+			<AModal isVisible={showResumeModal} onClose={()=>setShowResumeModal(false)}>
+				<AddResumeModal/>
+			</AModal>
         </>
   )
 }

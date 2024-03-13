@@ -129,8 +129,8 @@ const listInterviews = asyncHandler(async(req,res)=>{
     if(req.user.role==='Incharge'){
         const id = req.params.id;
         const myArr = id.split(',')
-        console.log(id)
-        console.log(myArr)
+        // console.log(id)
+        // console.log(myArr)
 
         const interviews = await Interview.find({$and:[{interviewer:{$in:myArr}},{status:{$ne:'Cancelled'}}]},{
             interviewer:1,
@@ -239,7 +239,7 @@ const listStudents = asyncHandler(async(req,res)=>{
 })
 
 const uploadFiles = asyncHandler(async(req,res)=>{
-    console.log(req)
+    // console.log(req)
     // console.log(req.file)
     res.send("HI")
 })

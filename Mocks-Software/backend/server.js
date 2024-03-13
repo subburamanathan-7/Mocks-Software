@@ -4,10 +4,16 @@ const colors = require('colors');
 dotenv.config();
 
 const cors = require('cors')
+const path = require('path')
 const port = process.env.PORT || 5000
+
 
 const {errorHandler} = require('./middlewares/errorMiddleware')
 const connectDB = require('./config/dbconfig');
+
+const __dirname = path.dirname("")
+const buildpath = path.join(__dirname,"../frontend/build")
+
 
 connectDB()
 const app = express();
@@ -25,6 +31,9 @@ app.use('/api/interviewer',require('./routes/interviewerRoutes'));
 app.use('/api/config',require('./routes/configRoutes'));
 
 
+app.get('*',function(req,res){
+    res.sendFile(path.join(__dirname,'../frontend/build/index.html'))
+})
 
 app.use(errorHandler);//Overides default ErrorHandler
 

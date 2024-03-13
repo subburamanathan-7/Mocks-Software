@@ -6,7 +6,7 @@ import {deallocateStudent} from '../features/incharge/InchargeServices'
 
 function AdminDeallocationDialog({currentInterview,student}) {
 
-    console.log({currentInterview,student})
+    // console.log({currentInterview,student})
     const [buttonState, setButtonState] = useState(false)
 
     const deallocateStudentMutation = useMutation({

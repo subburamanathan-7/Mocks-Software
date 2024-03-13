@@ -77,19 +77,18 @@ function InterviewerDashboard() {
         content = content.map((interview)=>{
             if(interview.status===currentStatus){
                 count++;
-                return(
+                return( 
                     <tr className=''>
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{count}</td>
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.regNo}</td>
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.name}</td>
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{deptsMap[interview.student.dept]}</td>
-                        <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.aptitude_total}/50</td>
-                        <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.gd_total}/50</td>
-                        <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.status==='Completed'?(
-                           
+                        <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.aptitude_total===-1?('AB'):(interview.student.aptitude_total+'/50')}</td>
+                        <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.gd_total===-1?('AB'):(interview.student.gd_total+'/50')}</td>
+                        <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.status==='Completed'?(   
                            <button 
-                           className='bg-black text-white p-2 hover:scale-95 duration-150'
-                           onClick={()=>{
+                            className='bg-black text-white p-2 hover:scale-95 duration-150'
+                            onClick={()=>{
                                setCurrentInterview({student:interview.student, interview:interview._id})
                                setShowUpdateGradeModal(true)
                            }}>
@@ -115,8 +114,8 @@ function InterviewerDashboard() {
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.regNo}</td>
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.name}</td>
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{deptsMap[interview.student.dept]}</td>
-                        <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.aptitude_total}/50</td>
-                        <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.gd_total}/50</td>
+                        <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.aptitude_total===-1?('AB'):(interview.student.aptitude_total+'/50')}</td>
+                        <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.gd_total===-1?('AB'):(interview.student.gd_total+'/50')}</td>
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.status==='Completed'?(
                             <button 
                             className='bg-black text-white p-2 hover:scale-95 duration-150'
@@ -137,11 +136,9 @@ function InterviewerDashboard() {
                         </td>
                     </tr>
                 )
-
             }
         })
     }
-
     //Get User
     const getUserQuery = useQuery({
         queryKey:['user',sessionStorage.getItem('interviewer')],

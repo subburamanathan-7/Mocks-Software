@@ -19,7 +19,7 @@ function AddUserDialog() {
     const addUserMutation = useMutation({
         mutationFn:register,
         onSuccess:(data)=>{
-            console.log(data)
+            // console.log(data)
             toast.success('user created successfully')
             setButtonState(false)
         },

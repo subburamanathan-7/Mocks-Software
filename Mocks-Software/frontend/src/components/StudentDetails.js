@@ -20,7 +20,6 @@ function StudentDetails() {
     const navigate = useNavigate();
 
     let [count, setCount] = useState(0);
-    
 
     const [studentDetails,setStudentDetails] = useState(null);
     const [interviewDetails,setInterviewDetails] = useState(null);
@@ -152,23 +151,23 @@ function StudentDetails() {
                             <tbody className=''>
                                 <tr className='py-[5%] text-lg font-bold border '>
                                     <th className='p-2 tracking-wide text-center border'>CORE</th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?studentDetails.aptitude_scores.core:null}</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?(studentDetails.aptitude_total===-1?('-'):(studentDetails.aptitude_scores.core+'/20')):(null)}</td>
                                 </tr>
                                 <tr className='py-[5%] text-lg font-bold border '>
                                     <th className='p-2 tracking-wide text-center border'>CODING </th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?studentDetails.aptitude_scores.coding:null}</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?(studentDetails.aptitude_total===-1?('-'):(studentDetails.aptitude_scores.coding+'/10')):(null)}</td>
                                 </tr>
                                 <tr className='py-[5%] text-lg font-bold border '>
                                     <th className='p-2 tracking-wide text-center border'>VERBAL </th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?studentDetails.aptitude_scores.verbal:null}</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?(studentDetails.aptitude_total===-1?('-'):(studentDetails.aptitude_scores.verbal+'/10')):(null)}</td>
                                 </tr>
                                 <tr className='py-[5%] text-lg font-bold border '>
                                     <th className='p-2 tracking-wide text-center border'>QUANTS </th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?studentDetails.aptitude_scores.quants:null}</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?(studentDetails.aptitude_total===-1?('-'):(studentDetails.aptitude_scores.quants+'/10')):(null)}</td>
                                 </tr>
                                 <tr className='py-[5%] text-lg font-bold border '>
                                     <th className='p-2 tracking-wide text-center border'>TOTAL </th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?studentDetails.aptitude_total:null}/50</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?(studentDetails.aptitude_total===-1?('AB'):(studentDetails.aptitude_total+'/50')):(null)}</td>
                                 </tr>
                             </tbody>
                     </table>
@@ -183,27 +182,27 @@ function StudentDetails() {
                         <tbody className='divide-y divide font-semibold'>
                             <tr className=''>
                                 <th className='p-2 tracking-wide text-center border'>SUBJECT KNOWLEDGE</th>
-                                <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?studentDetails.gd_scores.subject:null}</td>
+                                <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?(studentDetails.gd_total===-1?('-'):(studentDetails.gd_scores.subject+'/10')):(null)}</td>
                             </tr>
                             <tr>
                                 <th className='p-2 tracking-wide text-center border'>COMMUNICATION SKILLS</th>
-                                <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?studentDetails.gd_scores.communication:null}</td>
+                                <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?(studentDetails.gd_total===-1?('-'):(studentDetails.gd_scores.communication+'/10')):(null)}</td>
                             </tr>
                             <tr>
                                 <th className='p-2 tracking-wide text-center border'>BODY LANGUAGE</th>
-                                <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?studentDetails.gd_scores.body_language:null}</td>
+                                <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?(studentDetails.gd_total===-1?('-'):(studentDetails.gd_scores.body_language+'/10')):(null)}</td>
                             </tr>
                             <tr>
                                 <th className='p-2 tracking-wide text-center border'>ACTIVE PARTICIPATION</th>
-                                <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?studentDetails.gd_scores.active:null}</td>
+                                <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?(studentDetails.gd_total===-1?('-'):(studentDetails.gd_scores.active+'/10')):(null)}</td>
                             </tr>
                             <tr>
                                 <th className='p-2 tracking-wide text-center border'>LISTENING SKILLS</th>
-                                <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?studentDetails.gd_scores.listening:null}</td>
+                                <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?(studentDetails.gd_total===-1?('-'):(studentDetails.gd_scores.listening+'/10')):(null)}</td>
                             </tr>
                             <tr className='py-[5%] text-lg font-bold border '>
                                     <th className='p-2 tracking-wide text-center border'>TOTAL </th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?studentDetails.gd_total:null}/50</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails?(studentDetails.gd_total===-1?('AB'):(studentDetails.gd_total+'/50')):(null)}</td>
                                 </tr>
                         </tbody>
                     </table>

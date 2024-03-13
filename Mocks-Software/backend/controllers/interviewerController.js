@@ -8,7 +8,7 @@ const Student = require('../models/studentModel');
 // @route POST api/interviewer/grade_interview/:id
 // @access Private {Interviewer}
 const gradeInterview = asyncHandler(async(req,res)=>{
-    console.log(req.params.id)
+    // console.log(req.params.id)
     const {gradeData} = req.body;
     
     const interview = await Interview.findById(req.params.id);

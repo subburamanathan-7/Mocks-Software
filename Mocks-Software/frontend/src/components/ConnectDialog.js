@@ -50,7 +50,7 @@ function ConnectDialog() {
     const handleSubmit =  (e)=>{
         e.preventDefault()
         setButtonState(true)
-        console.log(formData)
+        // console.log(formData)
         if(isChecked===false){
             assignSlotMutation.mutate({
                 token:sessionStorage.getItem('user'),

@@ -30,6 +30,10 @@ function GradeDialog(currentInterview) {
     const [buttonState,setButtonState] = useState(false)
 
     const [studentDetails, setStudentDetails] = useState(currentInterview.currentInterview.student);    
+
+    const [GDState, setGDState] = useState(true);
+    const [AptitudeState, setAptitudeState] = useState(true);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setGradeData((prevGradeData) => ({ ...prevGradeData, [name]: value }));
@@ -103,23 +107,23 @@ function GradeDialog(currentInterview) {
                             <tbody className=' font-semibold'>
                                 <tr className='border '>
                                     <th className='p-2 tracking-wide text-center border'>CORE</th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_scores.core}/20</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_total===-1?('-'):(studentDetails.aptitude_scores.core+'/20')}</td>
                                 </tr>
                                 <tr className='border '>
                                     <th className='p-2 tracking-wide text-center border'>CODING </th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_scores.coding}/10</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_total===-1?('-'):(studentDetails.aptitude_scores.coding+'/10')}</td>
                                 </tr>
                                 <tr className='border '>
                                     <th className='p-2 tracking-wide text-center border'>VERBAL </th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_scores.verbal}/10</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_total===-1?('-'):(studentDetails.aptitude_scores.verbal+'/10')}</td>
                                 </tr>
                                 <tr className='border '>
                                     <th className='p-2 tracking-wide text-center border'>QUANTS </th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_scores.quants}/10</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_total===-1?('-'):(studentDetails.aptitude_scores.quants+'/10')}</td>
                                 </tr>
                                 <tr className='py-[4%] text-lg font-bold border '>
                                     <th className='p-2 tracking-wide text-center border'>TOTAL </th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_total}/50</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_total===-1?('AB'):(studentDetails.aptitude_total+'/50')}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -134,27 +138,27 @@ function GradeDialog(currentInterview) {
                             <tbody className='divide-y divide font-semibold'>
                                 <tr className=''>
                                     <th className='p-2 tracking-wide text-center border'>SUBJECT KNOWLEDGE</th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_scores.subject}/10</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_total===-1?('-'):(studentDetails.gd_scores.subject+'/10') }</td>
                                 </tr>
                                 <tr>
                                     <th className='p-2 tracking-wide text-center border'>COMMUNICATION SKILLS</th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_scores.communication}/10</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_total===-1?('-'):(studentDetails.gd_scores.communication+'/10')}</td>
                                 </tr>
                                 <tr>
                                     <th className='p-2 tracking-wide text-center border'>BODY LANGUAGE</th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_scores.body_language}/10</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_total===-1?('-'):(studentDetails.gd_scores.body_language+'/10')}</td>
                                 </tr>
                                 <tr>
                                     <th className='p-2 tracking-wide text-center border'>ACTIVE PARTICIPATION</th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_scores.active}/10</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_total===-1?('-'):(studentDetails.gd_scores.active+'/10')}</td>
                                 </tr>
                                 <tr>
                                     <th className='p-2 tracking-wide text-center border uppercase'>listening SKILLS</th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_scores.listening}/10</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_total===-1?('-'):(studentDetails.gd_scores.listening+'/10')}</td>
                                 </tr>
                                 <tr className='py-[4%] text-lg font-bold border '>
                                     <th className='p-2 tracking-wide text-center border'>TOTAL </th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_total}/50</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_total===-1?('AB'):(studentDetails.gd_total+'/50')}</td>
                                 </tr>
                             </tbody>
                         </table>

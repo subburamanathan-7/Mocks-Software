@@ -8,11 +8,10 @@ export const register = async(data)=>{
         },
     }
     const response = await axios.post(API_URL+'register',data,config)
-    console.log(response.data)
+    // console.log(response.data)
 
     return response.data
 }
-
 
 export const login = async(formData)=>{
     const response = await axios.post(API_URL+'login',formData)
@@ -64,10 +63,8 @@ export const getStudent = async(studentId,token)=>{
     return response.data
 }
 
-
 export const  listInterviews = async(id,token)=>{
-    console.log(id)
-    
+    // console.log(id)
     const config = {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -90,10 +87,10 @@ export const listStudents = async(token)=>{
 }
 
 export const uploadFiles = async(file)=>{
-    console.log(file)
+    // console.log(file)
 
     const response = await axios.post(API_URL+'upload_files')
-    console.log(response.data)
+    // console.log(response.data)
     return response.data
 
 }

@@ -44,7 +44,7 @@ const updateConfig = asyncHandler(async(req,res)=>{
         res.status(403)
         throw new Error('config not updated')
     }
-    console.log(updateConfig)
+    // console.log(updateConfig)
     res.status(200).json({
         interviewCount:updateConfig.interviewCount
     })

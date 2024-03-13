@@ -84,8 +84,8 @@ function InchargeDashboard() {
                     <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.regNo}</td>
                     <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.name}</td>
                     <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{deptsMap[interview.student.dept]}</td>
-                    <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.gd_total}/50</td>
-                    <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.aptitude_total}/50</td>
+                    <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.gd_total===-1?('AB'):(interview.student.gd_total+'/50')}</td>
+                    <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.aptitude_total===-1?('AB'):(interview.student.aptitude_total+'/50')}</td>
                     <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.status==='Completed'?(
                         <i className="text-green  text-xl fa-regular fa-square-check"></i>
                     ):(

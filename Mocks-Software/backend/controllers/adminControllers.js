@@ -11,7 +11,7 @@ const Interview = require('../models/interviewModel');
 const assignSlot = asyncHandler(async(req,res)=>{
 
     const {formData} = req.body;
-    console.log(formData)
+    // console.log(formData)
 
     if(!formData.inchargeEmail || !formData.interviewerEmail){
         res.status(401)
@@ -37,7 +37,7 @@ const assignSlot = asyncHandler(async(req,res)=>{
             currentIncharge.interviewer.map((hr)=>{
                 newInterviewers.push(hr)
             })
-            console.log(currentIncharge.interviewer)
+            // console.log(currentIncharge.interviewer)
     
             currentIncharge.interviewer.map((hr)=>{
                 let newHr = new String(hr);
@@ -87,7 +87,7 @@ const assignSlot = asyncHandler(async(req,res)=>{
 
 const dischargeSlot =  asyncHandler(async(req,res)=>{
     const {formData} = req.body;
-    console.log(formData)
+    // console.log(formData)
 
     if(!formData.inchargeEmail || !formData.interviewerEmail){
         res.status(401)
@@ -236,10 +236,34 @@ const listUsers = asyncHandler(async(req,res)=>{
     res.status(200).json(users)
 })
 
+
+const addResume = asyncHandler(async(req,res)=>{
+
+    const {regNo,resumeFile} = req.body;
+    const currentStudent = await Student.findOne({regNo:regNo});
+    // console.log({get:currentStudent})
+    if(!currentStudent){
+        res.status(404)
+        throw new Error('student details not found')
+    }
+    const value = {$set:{resumeFile:resumeFile}}
+    await Student.updateOne({_id:currentStudent._id},value)
+
+    const updatedStudent = await Student.findOne({regNo:regNo})
+
+    if(!updatedStudent.resumeFile){
+        res.status(403)
+        throw new Error('resume adding failed')
+    }
+    // console.log({sent:updatedStudent})
+
+    res.status(200).json(updatedStudent)
+})
 module.exports={
     assignSlot,
     dischargeSlot,
     listStudentsByDept,
     listInterviewsByStudent,
-    listUsers
+    listUsers,
+    addResume
 }

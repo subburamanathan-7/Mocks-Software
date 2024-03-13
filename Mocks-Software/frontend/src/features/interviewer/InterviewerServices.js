@@ -1,5 +1,4 @@
 import axios from "axios";
-
 const API_URL  = "http://localhost:5000/api/interviewer/"
 
 export const gradeInterview = async(gradeData)=>{
@@ -8,12 +7,9 @@ export const gradeInterview = async(gradeData)=>{
             Authorization: `Bearer ${gradeData.token}`,
         },
     }
-
     const response = await axios.post(API_URL+'grade_interview/'+gradeData.interview,gradeData,config);
-    console.log(response.data)
-
-  return response.data
-
+    // console.log(response.data)
+    return response.data
 }
 
 export const getInterview = async(id,token)=>{
@@ -29,13 +25,13 @@ export const getInterview = async(id,token)=>{
 }
 
 export const updateInterviewScores = async(formData)=>{
-    console.log(formData)
+    // console.log(formData)
     const config = {
         headers:{
             Authorization:`Bearer ${formData.token}`
         }
     }
     const response =  await axios.post(API_URL+'interview/'+formData.id,formData.data,config)
-    console.log(response.data)
+    // console.log(response.data)
     return response.data
 }
