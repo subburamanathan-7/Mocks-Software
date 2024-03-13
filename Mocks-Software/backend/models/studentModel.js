@@ -65,6 +65,9 @@ const studentSchema = mongoose.Schema({
         type:Number,
         default:0,
         required:[true, 'Please add the interview count']
+    },
+    resumeFile:{
+        type:String,
     }
 })
 

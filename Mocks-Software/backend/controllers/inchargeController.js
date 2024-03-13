@@ -3,12 +3,22 @@ const asyncHandler = require('express-async-handler');
 const Interview = require('../models/interviewModel');
 const Student = require('../models/studentModel');
 const User = require('../models/userModel');
+const Config = require('../models/configModel')
 
 // @desc allocateStudent
 // @route POST api/incharge/allocate_student
 // @access Private {Incharge}
 
 const allocateStudent = asyncHandler(async(req,res)=>{
+    const configData = await Config.findOne({id:'1'}); 
+
+    if(!configData){
+        res.status(400)
+        throw new Error('config does not exists')
+    }
+
+    const dbCount = configData.interviewCount;
+    console.log(dbCount)
     let {studentregNo,interviewer,interviewerEmail} = req.body;
     let currentIncharge, interviewerDets;
 
@@ -40,7 +50,7 @@ const allocateStudent = asyncHandler(async(req,res)=>{
     // console.log({interviewer,currentIncharge,currentStudent})
     const interviewExists = await Interview.findOne({$and:[{student:currentStudent._id},{interviewer:interviewer}]})
     if(interviewExists){
-        if(interviewExists.status==='Cancelled' && currentStudent.interviewCount<3){
+        if(interviewExists.status==='Cancelled' && currentStudent.interviewCount<dbCount ){
 
             const value = {$set:{status:'Pending'}}
             const value1 = {$inc:{interviewCount:currentStudent.interviewCount+1}}
@@ -73,7 +83,7 @@ const allocateStudent = asyncHandler(async(req,res)=>{
     }
     else{
         // console.log(currentStudent.interviewCount+1)
-        if(currentStudent.interviewCount<3){
+        if(currentStudent.interviewCount<dbCount){
 
             const value = {$set:{interviewCount:currentStudent.interviewCount+1}}
             await Student.updateOne({_id:currentStudent._id},value)

@@ -22,6 +22,8 @@ app.use('/api/admin',require('./routes/adminRoutes'));
 app.use('/api/student',require('./routes/studentRoutes'));
 app.use('/api/incharge',require('./routes/inchargeRoutes'));
 app.use('/api/interviewer',require('./routes/interviewerRoutes'));
+app.use('/api/config',require('./routes/configRoutes'));
+
 
 
 app.use(errorHandler);//Overides default ErrorHandler

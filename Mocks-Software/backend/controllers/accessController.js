@@ -6,7 +6,6 @@ const generateToken = require('../config/generateToken')
 const Interview = require('../models/interviewModel');
 const User = require('../models/userModel');
 const Student = require('../models/studentModel');
-const PDF = require('../models/PDFDetails')
 
 // @desc registerUser
 // @route POST api/user/register
@@ -154,7 +153,7 @@ const listInterviews = asyncHandler(async(req,res)=>{
             incharge:1,
             status:1
         }).sort({status:-1}).populate({path:'student', select:['name', 'regNo', 'dept', 'section', 'gd_scores','gd_total', 
-            'aptitude_scores','aptitude_total','interview_count']})
+            'aptitude_scores','aptitude_total','interview_count','resumeFile']})
 
         if(!interviews){
             res.status(400)
@@ -174,7 +173,7 @@ const listInterviews = asyncHandler(async(req,res)=>{
             scores:1,
             comments:1
         }).sort({status:1}).populate({path:'student', select:['name', 'regNo', 'dept', 'section', 'gd_scores','gd_total', 
-            'aptitude_scores','aptitude_total']})
+            'aptitude_scores','aptitude_total','resumeFile']})
 
         if(!interviews){
             res.status(400)
@@ -228,7 +227,8 @@ const listStudents = asyncHandler(async(req,res)=>{
             dept:1,
             aptitude_total:1,
             gd_total:1,
-            interviewCount:1
+            interviewCount:1,
+            resumeFile:1
         });
         if(!students){
             res.status(400)

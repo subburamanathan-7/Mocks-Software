@@ -65,7 +65,7 @@ export const getStudent = async(studentId,token)=>{
 }
 
 
-export const listInterviews = async(id,token)=>{
+export const  listInterviews = async(id,token)=>{
     console.log(id)
     
     const config = {

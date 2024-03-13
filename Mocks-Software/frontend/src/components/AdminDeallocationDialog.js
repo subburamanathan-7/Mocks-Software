@@ -5,7 +5,7 @@ import { useState } from 'react';
 import {deallocateStudent} from '../features/incharge/InchargeServices'
 
 function AdminDeallocationDialog({currentInterview,student}) {
-    // console.log({currentInterview.interviewer_id,student})
+    // console.log(currentInterview)
     const [buttonState, setButtonState] = useState(false)
 
     const deallocateStudentMutation = useMutation({

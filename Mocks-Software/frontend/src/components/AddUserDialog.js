@@ -24,7 +24,7 @@ function AddUserDialog() {
             setButtonState(false)
         },
         onError:(message)=>{
-            console.log(message)
+            // console.log(message)
             toast.error('something went wrong')
             setButtonState(false)
 

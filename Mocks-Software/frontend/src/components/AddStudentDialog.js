@@ -62,7 +62,7 @@ function AddStudentDialog() {
                     <h3 className='text-xl font-bold mb-4 text-center '>Add Student</h3>
                     <form>
                         <div className='grid grid-cols-4 gap-2 mt-2 font-semibold'>
-                           <div>Register Number</div>
+                           <div>Registration Number</div>
                            <div>Name</div>
                            <div>Department</div>
                            <div>Section</div>

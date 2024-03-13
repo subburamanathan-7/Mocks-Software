@@ -1,50 +1,50 @@
-import {useState} from 'react';
+// import {useState} from 'react';
 
-import {storage} from 'firebase';
-import {ref, uploadBytes} from 'firebase/storage';
-import {v4} from 'uuid';
+// import {storage} from 'firebase';
+// import {ref, uploadBytes} from 'firebase/storage';
+// import {v4} from 'uuid';
 
-function FileUpload() {
-    const [file,setFile] = useState(null)
+// function FileUpload() {
+//     const [file,setFile] = useState(null)
 
-    // const uploadFileMutation = useMutation({
-    //     mutationFn: uploadFiles,
-    //     onSuccess:(data)=>{
-    //         console.log(data)
-    //     },
-    //     onError:(message)=>{
-    //         console.log(message)
-    //     }
-    // })
+//     // const uploadFileMutation = useMutation({
+//     //     mutationFn: uploadFiles,
+//     //     onSuccess:(data)=>{
+//     //         console.log(data)
+//     //     },
+//     //     onError:(message)=>{
+//     //         console.log(message)
+//     //     }
+//     // })
     
-    const handleChange =(e)=>{
-        setFile(e.target.files[0])
-    }
+//     const handleChange =(e)=>{
+//         setFile(e.target.files[0])
+//     }
 
-    const handleSubmit = (e)=>{
-        e.preventDefault();
+//     const handleSubmit = (e)=>{
+//         e.preventDefault();
 
-        if(!file)
-            return;
-        const fileRef = ref(storage,`INT/${file.name + v4()}`);
-        uploadBytes(fileRef,file).then(()=>{
-            alert("file uploaded")
-        })
+//         if(!file)
+//             return;
+//         const fileRef = ref(storage,`INT/${file.name + v4()}`);
+//         uploadBytes(fileRef,file).then(()=>{
+//             alert("file uploaded")
+//         })
         
        
-    }
-    return (
-        <>
-            <form>
-                <input type="file" accept ="application/pdf"
-                onChange={handleChange} name='file' />
+//     }
+//     return (
+//         <>
+//             <form>
+//                 <input type="file" accept ="application/pdf"
+//                 onChange={handleChange} name='file' />
 
-                <button type='submit'  onClick={handleSubmit}>submit</button>
+//                 <button type='submit'  onClick={handleSubmit}>submit</button>
                 
-            </form>
+//             </form>
             
-        </>
-    )
-}
+//         </>
+//     )
+// }
 
-export default FileUpload
+// export default FileUpload

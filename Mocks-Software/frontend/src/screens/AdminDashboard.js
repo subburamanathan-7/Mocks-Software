@@ -2,7 +2,6 @@ import React, {useEffect} from 'react'
 import DashNavbar from '../components/DashNavbar'
 import { useNavigate } from "react-router-dom"
 
-
 function AdminDashboard() {
 
     const navigate = useNavigate();

@@ -4,7 +4,7 @@ import toast, { ErrorIcon } from 'react-hot-toast';
 import {useMutation, useQuery} from '@tanstack/react-query';
 import { getInterview, gradeInterview, updateInterviewScores } from "../features/interviewer/InterviewerServices";
 
-function GradeDialog(currentInterview) {
+function  GradeDialog(currentInterview) {
     let content;
 
     const [gradeData,setGradeData] = useState({
@@ -30,9 +30,7 @@ function GradeDialog(currentInterview) {
 
     })
     const [studentDetails, setStudentDetails] = useState(currentInterview.currentInterview.student);
-
-   
-
+    const [buttonState, setButtonState] = useState(false)
     const getScoresQuery = useQuery({
         queryKey:['scores',studentDetails.regNo],
         queryFn:()=>{
@@ -44,9 +42,7 @@ function GradeDialog(currentInterview) {
         refetchOnWindowFocus:false,
     });
 
-    if(getScoresQuery.isLoading || getScoresQuery.isFetching){
-
-    }
+    if(getScoresQuery.isLoading || getScoresQuery.isFetching){}
     else if(getScoresQuery.isFetched){
         // console.log(getScoresQuery.data[0])
 
@@ -70,7 +66,6 @@ function GradeDialog(currentInterview) {
             hover6:0,
     
             comments:getScoresQuery.data[0].comments
-    
         }
         // console.log(currentScore)
         if(gradeData.question1===0){
@@ -100,9 +95,11 @@ function GradeDialog(currentInterview) {
           // queryClient.invalidateQueries(["globalContacts"])
         //   console.log(data)
             toast.success('scores updated successfully')
+            setButtonState(false)
       },    
         onError:(message)=>{
             toast.error(message.response.data.message)    
+            setButtonState(false)
         }
     })
     
@@ -110,9 +107,6 @@ function GradeDialog(currentInterview) {
         const { name, value } = e.target;
         setGradeData((prevGradeData) => ({ ...prevGradeData, [name]: value }));
     };
-    // useEffect(()=>{
-    //     console.log(currentInterview.currentInterview)
-    // })
 
     const handleSubmit = (e)=>{
         e.preventDefault();
@@ -121,6 +115,7 @@ function GradeDialog(currentInterview) {
                 toast('Kindly assign a score to each parameter.');
         }
         else{
+            setButtonState(true)
             updateScoresMutation.mutate({
                 token:sessionStorage.getItem('user'),
                 id:currentInterview.currentInterview.interview,
@@ -138,7 +133,6 @@ function GradeDialog(currentInterview) {
             })
         }
     }
-
     return (
        <>
             <div className="">
@@ -156,31 +150,41 @@ function GradeDialog(currentInterview) {
                             </tr>
                         </table>
                         <hr className='my-[2%]'/>
+                        <div className="flex justify-around">
+                            {
+                                !studentDetails.resumeFile?(
+                                    <div className=' p-2 bg-blue text-white text-left font-bold  hover:cursor-pointer hover:scale-95  '>{'No Resume Found'}</div>
+                                ):(
+                                    <div className=' p-2 bg-blue text-white text-left font-bold  hover:cursor-pointer hover:scale-95  '><a target="_blank" href={studentDetails.resumeFile}>{'View Resume'}</a></div>
+                                )
+                            }
+                        </div>
+
                         <div className="flex justify-between ">
                         <table className='cursor-default w-full border'>
                             <caption className="text-xl font-bold underline my-[2%]">Aptitude Scores</caption>
                             <thead className=" shadow-mg bg-gray text-white">
                                     <th className='p-2 tracking-wide border-black text-center text-center '>PARAMETER</th>
-                                    <th className='p-2 text-sm tracking-wide text-center border-black whitespace-nowrap '>SCORE</th>
+                                    <th className='p-2 text-sm tracking-wide text-center border-black whitespace-nowrap border '>SCORE</th>
                             </thead>
-                            <tbody className=''>
-                                <tr className='py-[5%] text-lg font-bold border '>
+                            <tbody className='divide-y divide font-semibold'>
+                                <tr className='border '>
                                     <th className='p-2 tracking-wide text-center border'>CORE</th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_scores.core}</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_scores.core}/20</td>
                                 </tr>
-                                <tr className='py-[5%] text-lg font-bold border '>
+                                <tr className='border '>
                                     <th className='p-2 tracking-wide text-center border'>CODING </th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_scores.coding}</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_scores.coding}/10</td>
                                 </tr>
-                                <tr className='py-[5%] text-lg font-bold border '>
+                                <tr className='border '>
                                     <th className='p-2 tracking-wide text-center border'>VERBAL </th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_scores.verbal}</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_scores.verbal}/10</td>
                                 </tr>
-                                <tr className='py-[5%] text-lg font-bold border '>
+                                <tr className='border '>
                                     <th className='p-2 tracking-wide text-center border'>QUANTS </th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_scores.quants}</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_scores.quants}/10</td>
                                 </tr>
-                                <tr className='py-[5%] text-lg font-bold border '>
+                                <tr className=' py-[4%] text-lg font-bold border '>
                                     <th className='p-2 tracking-wide text-center border'>TOTAL </th>
                                     <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.aptitude_total}/50</td>
                                 </tr>
@@ -189,31 +193,31 @@ function GradeDialog(currentInterview) {
 
                         <table className='cursor-default w-full border'>
                             <caption className="text-xl font-bold underline my-[2%]">GD Scores</caption>
-                            <thead className=" shadow-mg bg-gray text-white">
+                            <thead className=" shadow-md bg-gray text-white">
                                     <th className='p-2 tracking-wide border-black text-center text-center '>PARAMETER</th>
-                                    <th className='p-2 text-sm tracking-wide text-center border-black whitespace-nowrap '>SCORE</th>
+                                    <th className='p-2 text-sm tracking-wide text-center border-black whitespace-nowrap border '>SCORE</th>
                     
                             </thead>
                             <tbody className='divide-y divide font-semibold'>
                                 <tr className=''>
                                     <th className='p-2 tracking-wide text-center border'>SUBJECT KNOWLEDGE</th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_scores.subject}</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_scores.subject}/10</td>
                                 </tr>
                                 <tr>
                                     <th className='p-2 tracking-wide text-center border'>COMMUNICATION SKILLS</th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_scores.communication}</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_scores.communication}/10</td>
                                 </tr>
                                 <tr>
                                     <th className='p-2 tracking-wide text-center border'>BODY LANGUAGE</th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_scores.body_language}</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_scores.body_language}/10</td>
                                 </tr>
                                 <tr>
                                     <th className='p-2 tracking-wide text-center border'>ACTIVE PARTICIPATION</th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_scores.active}</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_scores.active}/10</td>
                                 </tr>
                                 <tr>
                                     <th className='p-2 tracking-wide text-center border'>LISTENING SKILLS</th>
-                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_scores.listening}</td>
+                                    <td className='p-2 text-sm tracking-wide text-center border whitespace-nowrap '>{studentDetails.gd_scores.listening}/10</td>
                                 </tr>
                                 <tr className='py-[5%] text-lg font-bold border '>
                                     <th className='p-2 tracking-wide text-center border'>TOTAL </th>
@@ -221,10 +225,9 @@ function GradeDialog(currentInterview) {
                                 </tr>
                             </tbody>
                         </table>
-
                         </div>
 
-                        <div className=" text-xl font-bold underline my-[3%]">Interview Scores</div>
+                        <div className="text-xl font-bold underline my-[3%]">Interview Scores</div>
                             <div className="flex flex-row justify-between flex-wrap">
                                 <div className='px-[3%] pb-[2%] grow text-xl font-semibold '>
                                     <div>Professional Appearance</div>
@@ -248,7 +251,7 @@ function GradeDialog(currentInterview) {
                                     </div>
                                 </div>
                                 <div className='px-[3%] pb-[2%]  grow text-xl font-semibold'>
-                                    Managerial Aptitude
+                                    Managerial Competence
                                     <div className='px-[3%] py-[2%]'>
                                         {
                                             [...Array(5)].map((star, index) => {
@@ -268,7 +271,6 @@ function GradeDialog(currentInterview) {
                                         }
                                     </div>
                                 </div>
-
                                 <div className='px-[3%] pb-[2%]  grow text-xl font-semibold'>
                                     General Intelligence 
                                     <div className='px-[3%] py-[2%]'>
@@ -291,7 +293,7 @@ function GradeDialog(currentInterview) {
                                     </div>
                                 </div>
                                 <div className='px-[3%] pb-[2%]  grow text-xl font-semibold'>
-                                    Techical Knowledge  
+                                    Technical Knowledge  
                                     <div className='px-[3%] py-[2%]'>
                                         {
                                             [...Array(5)].map((star, index) => {
@@ -332,9 +334,8 @@ function GradeDialog(currentInterview) {
                                         }
                                     </div>
                                 </div>
-
                                 <div className='px-[3%] pb-[2%]  grow text-xl font-semibold'>
-                                    Self-Confidence Skills   
+                                    Self-Confidence   
                                     <div className='px-[2%] py-[2%]'>
                                         {
                                             [...Array(5)].map((star, index) => {
@@ -355,19 +356,20 @@ function GradeDialog(currentInterview) {
                                     </div>
                                 </div>
                             </div>
-                        <form className="flex flex-col">
+
                             <label>Comments</label>
-                            <input className="px-2 -py-4 w-[75%] h-20 border" 
+                            <textarea className="px-2 -py-4 w-[75%] h-20 border" 
                             name='comments' value={gradeData.comments} onChange={handleChange}
-                            placeholder="Comments for the student(Strengths, Weakness, Areas of Improvement)" type="textbox" />
-                        </form>
+                            placeholder="Comments (Strengths, Weakness, Areas of Improvement)" type="textbox" />
                         <div className=" flex flex-row justify-end mx-[2%] mt-[2%]">
+                           
                             <button className="bg-red text-white py-2 px-4 mx-2 hover:scale-95 duration-250"
                             id='cancel' onClick={()=>{}} type='submit'
                             >Cancel </button>
+                         
                             <button className="bg-green text-white py-2 px-4 mx-2 hover:scale-95 duration-250"
                             id='submit' onClick={handleSubmit} type='submit'
-                            disabled={!gradeData.question1 || !gradeData.question2 || !gradeData.question3 || !gradeData.question4 || !gradeData.question5 || !gradeData.question6} 
+                            disabled={!gradeData.question1 || !gradeData.question2 || !gradeData.question3 || !gradeData.question4 || !gradeData.question5 || !gradeData.question6 || buttonState} 
                             >Update</button>
                         </div>
 
@@ -378,5 +380,4 @@ function GradeDialog(currentInterview) {
        </>
     )
 }
-
 export default GradeDialog

@@ -34,7 +34,7 @@ function ViewGradeDialog(currentInterview) {
                         
                         <table className='w-[40%] text-xl'>
                             <tr>
-                                <td><div className='text-left font-medium '>Register Number :</div></td>
+                                <td><div className='text-left font-medium '>Registration Number :</div></td>
                                 <td><div className='text-left  font-bold  hover:cursor-pointer  '>{studentDetails.regNo}</div></td>
                             </tr>
                             <tr>
@@ -67,7 +67,7 @@ function ViewGradeDialog(currentInterview) {
                                 </div>
                             </div>
                             <div className='px-[3%] pb-[2%]  grow text-xl font-semibold'>
-                                Managerial Aptitude
+                                Managerial Competence
                                 <div className='px-[3%] py-[2%]'>
                                     {
                                         [...Array(5)].map((star, index) => {
@@ -104,7 +104,7 @@ function ViewGradeDialog(currentInterview) {
                                 </div>
                             </div>
                             <div className='px-[3%] pb-[2%]  grow text-xl font-semibold'>
-                                Techical Knowledge  
+                                Technical Knowledge  
                                 <div className='px-[3%] py-[2%]'>
                                     {
                                         [...Array(5)].map((star, index) => {
@@ -162,7 +162,7 @@ function ViewGradeDialog(currentInterview) {
                         </div>
                         <form className="flex flex-col">
                             <label>Comments</label>
-                            <input disabled={true} className="px-2 -py-4 w-[75%] h-20 border" 
+                            <textarea disabled={true} className="px-2 -py-4 w-[75%] h-20 border" 
                             name='comments' value={gradeData.comments} 
                             placeholder="Comments for the student(Strengths, Weakness, Areas of Improvement)" type="textbox" />
                         </form>

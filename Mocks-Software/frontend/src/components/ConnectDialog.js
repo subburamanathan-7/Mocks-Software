@@ -101,29 +101,18 @@ function ConnectDialog() {
                                         </span>
                                     </label>
                                 </div>
-
-
-
-
-
-
-
-
                                 <div className=' px-[3%] py-[0.5%] my-2 flex items-center justify-center bg-opacity-75 rounded-md border-2 border'>
                                     <input type='text' placeholder='Enter Interviewer Email' className='placeholder-[#000000] w-full px-2 rounded-full appearance-none focus:outline-none border-none '
                                     onChange={handleChange} name="interviewerEmail" value={formData.interviewerEmail} />
                                     
-                                    <button type="button" className="px-[2%] py-1 my-2 mx-2 rounded-lg cursor-pointer border-2 border-blue  shadow-md"
+                                    {/* <button type="button" className="px-[2%] py-1 my-2 mx-2 rounded-lg cursor-pointer border-2 border-blue  shadow-md"
                                         onClick={()=>{
                                             if(formData.interviewerEmail? !formData.interviewerEmail.includes('@forese.co.in'):false){
                                                 setFormData((prev)=>({...prev, interviewerEmail:formData.interviewerEmail+'@forese.co.in'}))
                                             }
                                         }}
-                                    >@forese.co.in</button>
-                                   
+                                    >@forese.co.in</button> */}
                                 </div>
-                                
-                                
                                 
                                 <div className=' px-[3%] py-[0.5%] my-2 flex items-center justify-center bg-opacity-75 rounded-md border-2 border'>
                                     <input type='text' placeholder='Enter Incharge Email' className='placeholder-[#000000] w-full px-2 rounded-full appearance-none focus:outline-none border-none '

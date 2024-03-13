@@ -14,6 +14,20 @@ import { useNavigate } from 'react-router-dom';
 function InterviewerDashboard() {
     let content;
     let [count,setCount] = useState(0);
+    const deptsMap = {
+        'AUT':'Automobile Engineering',
+        'ADS':'AI & DS',
+        'BIO':'Biotechnology',
+        'CHE':'Chemical Engineering',
+        'CIV':'Civil Engineering',
+        'CSE':'Computer Science Engineering',
+        'ECE':'Electronics & Communication Engineering',
+        'EEE':'Electronics & Electrical Engineering',
+        'INT':'Information Technology',
+        'MEC':'Mechanical Engineering',
+        'MAR':'Marine Engineering',
+
+    }
     const [inchargeDetails, setInchargeDetails]=useState(null);
     const [currentInterview,setCurrentInterview] = useState(null);
 
@@ -68,7 +82,7 @@ function InterviewerDashboard() {
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{count}</td>
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.regNo}</td>
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.name}</td>
-                        <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.dept}</td>
+                        <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{deptsMap[interview.student.dept]}</td>
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.aptitude_total}/50</td>
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.gd_total}/50</td>
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.status==='Completed'?(
@@ -79,7 +93,7 @@ function InterviewerDashboard() {
                                setCurrentInterview({student:interview.student, interview:interview._id})
                                setShowUpdateGradeModal(true)
                            }}>
-                           Edit</button>
+                           Edit Scores</button>
                         ):(
                             <button 
                             className='bg-black text-white p-2 hover:scale-95 duration-150'
@@ -100,7 +114,7 @@ function InterviewerDashboard() {
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{count}</td>
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.regNo}</td>
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.name}</td>
-                        <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.dept}</td>
+                        <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{deptsMap[interview.student.dept]}</td>
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.aptitude_total}/50</td>
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.student.gd_total}/50</td>
                         <td className='p-2 text-sm tracking-wide text-center whitespace-nowrap '>{interview.status==='Completed'?(
@@ -110,7 +124,7 @@ function InterviewerDashboard() {
                                 setCurrentInterview({student:interview.student, interview:interview._id})
                                 setShowUpdateGradeModal(true)
                             }}>
-                            Edit</button>
+                            Edit Scores</button>
                         ):(
                             <button 
                             className='bg-black text-white p-2 hover:scale-95 duration-150'
@@ -151,6 +165,7 @@ function InterviewerDashboard() {
         const value = event.target.value;
 		setCurrentStatus(value)
     }
+   
     return (
         <>
             <DashNavbar/>
@@ -169,10 +184,9 @@ function InterviewerDashboard() {
 								value={currentStatus} onChange={handleChange}
 								>
 								<option className='' value='' disabled selected hidden >Select Category...</option>
-								<option value="all">Every Interview</option>
-								<option value="Pending" >Pending</option>
+								<option value="all">All Interviews</option>
+								<option value="Pending">Pending</option>
 								<option value="Completed">Completed</option>
-
 							</select>
 						</div>
                     </div>
@@ -181,13 +195,12 @@ function InterviewerDashboard() {
                                 <thead className=''>
                                     <tr className='py-[5%] text-lg font-semibold '>
                                         <th className='p-2 tracking-wide text-center'>SNO</th>
-                                        <th className='p-2 tracking-wide text-center'>Register Number</th>
+                                        <th className='p-2 tracking-wide text-center'>Registration Number</th>
                                         <th className='p-2 tracking-wide text-center'>Name</th>
                                         <th className='p-2 tracking-wide text-center'>Department</th>
                                         <th className='p-2 tracking-wide text-center'>Aptitude Score</th>
                                         <th className='p-2 tracking-wide text-center'>GD Score</th>
                                         <th className='p-2 tracking-wide text-center'>Action</th>
-
                                     </tr>
                                 </thead>
                                 <tbody className='divide-y divide font-medium'>
@@ -212,20 +225,17 @@ function InterviewerDashboard() {
                                     </tr> */}
                                     {content}
                                 </tbody>
-                            </table>
-                            
+                            </table>  
                         </div>
                 </div>
             </div>
             <Modal isVisible={showGradeModal} onClose={()=>{setShowGradeModal(false)}}>
                 <GradeDialog currentInterview = {currentInterview}/>
             </Modal>
-
             <Modal isVisible={showUpdateGradeModal} onClose={()=>{setShowUpdateGradeModal(false)}}>
                 <UpdateGradeDialog currentInterview = {currentInterview}/>
             </Modal>
         </>
     )
 }
-
 export default InterviewerDashboard

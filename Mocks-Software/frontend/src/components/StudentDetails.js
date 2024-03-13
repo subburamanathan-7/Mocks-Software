@@ -29,7 +29,6 @@ function StudentDetails() {
     const [showAllocationModal, setShowAllocateModal] = useState(Boolean(false));
     const [showDeallocateModal,setShowDeallocateModal] = useState(Boolean(false));
 
-
 	useEffect(()=>{
         if(!sessionStorage.getItem('role') || sessionStorage.getItem('role')!=='Admin' ){
           navigate('/alogin');

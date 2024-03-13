@@ -2,6 +2,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 import toast, { Toaster } from 'react-hot-toast';
 
+import Home from './screens/Home'
 import InterviewerLogin from './screens/InterviewerLogin';
 import InchargeLogin from './screens/InchargeLogin';
 import AdminLogin from './screens/AdminLogin';
@@ -22,7 +23,7 @@ export function App() {
 		<>
 			<Router>
 				<Routes>
-					{/* <Route path='/' element={<></>}/> */}
+					<Route path='/' element={<Home/>}/>
 					<Route path='/ilogin' element={<InterviewerLogin/>}/>
 					<Route path='/vlogin' element={<InchargeLogin/>}/>
 					<Route path='/alogin' element={<AdminLogin/>}/>

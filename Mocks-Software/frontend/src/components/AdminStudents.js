@@ -120,11 +120,11 @@ function AdminStudents() {
 						<thead className=''>
 							<tr key={1} className='py-[5%] border bg-lgray  text-md font-semibold '>
 
-								<th className='p-2 tracking-wide text-center border border-gray'>Register Number</th>
+								<th className='p-2 tracking-wide text-center border border-gray'>Registration Number</th>
 								<th className='p-2 tracking-wide text-center border border-gray'>Name</th>
 								<th className='p-2 tracking-wide text-center border border-gray'>Department</th>
-								<th className='p-2 tracking-wide text-center border border-gray'>Aptitude Score</th>
-								<th className='p-2 tracking-wide text-center border border-gray'>GD Score</th>
+								<th className='p-2 tracking-wide text-center border border-gray'>Aptitude Scores</th>
+								<th className='p-2 tracking-wide text-center border border-gray'>GD Scores</th>
 								<th className='p-2 tracking-wide text-center border border-gray'>Interviews</th>
 								<th className='p-2 tracking-wide text-center border border-gray'>View</th>
 							</tr>

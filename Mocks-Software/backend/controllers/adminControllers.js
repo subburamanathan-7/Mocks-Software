@@ -187,7 +187,8 @@ const listStudentsByDept = asyncHandler(async(req,res)=>{
         dept:1,
         aptitude_total:1,
         gd_total:1,
-        interviewCount:1
+        interviewCount:1,
+        resumeFile:1
     });
 
     if(!students){

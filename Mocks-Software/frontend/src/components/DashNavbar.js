@@ -6,7 +6,8 @@ import { Menu, Transition } from '@headlessui/react'
 const forese = require('../assets/forese.png')
 
 function DashNavbar() {
-    let name = sessionStorage.getItem('name');
+  let name = sessionStorage.getItem('name');
+  let company = sessionStorage.getItem('company')
 	const [currentRoute,setCurrentRoute]=useState(String(window.location.href));
 
 	const navigate = useNavigate();
@@ -44,12 +45,21 @@ function DashNavbar() {
                           <div>
                             <Menu.Button className="">
                             {
-                       
+                              sessionStorage.getItem('role')==='Interviewer'?(
+                                <div className='mr-2 ml-2'>
+                                    <button className='bg-[#DBDFEA] text-[#000000] px-5 py-2 rounded-full flex  items-center justify-between'>
+                                        {name} - {company} <i class=" pl-2 fa-solid fa-caret-down"></i>
+                                    </button>
+                                </div>
+                              ):(
                                 <div className='mr-2 ml-2'>
                                     <button className='bg-[#DBDFEA] text-[#000000] px-5 py-2 rounded-full flex  items-center justify-between'>
                                         {name} <i class=" pl-2 fa-solid fa-caret-down"></i>
                                     </button>
                                 </div>
+                              )
+                       
+                                
                             }
                             </Menu.Button>
                           </div>

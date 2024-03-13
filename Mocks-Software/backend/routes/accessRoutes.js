@@ -16,6 +16,4 @@ router.route('/student/:id').get(authUser,getStudent)
 router.route('/list_interviews/:id').get(authUser,listInterviews)
 router.route('/list_students').get(authUser,listStudents)
 
-// router.route('/upload_files').post(upload.single('file'),uploadFiles)
-
 module.exports = router;
