@@ -16,7 +16,7 @@ const studentSchema = mongoose.Schema({
     },
     dept:{
         type:String,
-        enum:['ADS','AUT','BIO','CSE','CIV','CHM','EEE','ECE','INT','MEC','MAR'],
+        enum:['ADS','AUT','BIO','CSE','CIV','CHE','EEE','ECE','INT','MEC','MAR'],
         required:[true, 'Please add a department']
     },
     section: {

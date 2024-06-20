@@ -137,7 +137,7 @@ const listInterviews = asyncHandler(async(req,res)=>{
             student:1,
             incharge:1,
             status:1
-        }).sort({status:-1}).populate({path:'student', select:['name', 'regNo', 'dept', 'section', 'gd_total', 
+        }).sort({status:-1,createdAt:1}).populate({path:'student', select:['name', 'regNo', 'dept', 'section', 'gd_total', 
             'aptitude_total','interview_count']})
 
         if(!interviews){
@@ -152,7 +152,7 @@ const listInterviews = asyncHandler(async(req,res)=>{
             student:1,
             incharge:1,
             status:1
-        }).sort({status:-1}).populate({path:'student', select:['name', 'regNo', 'dept', 'section', 'gd_scores','gd_total', 
+        }).sort({status:-1,createdAt:1}).populate({path:'student', select:['name', 'regNo', 'dept', 'section', 'gd_scores','gd_total', 
             'aptitude_scores','aptitude_total','interview_count','resumeFile']})
 
         if(!interviews){
@@ -172,7 +172,7 @@ const listInterviews = asyncHandler(async(req,res)=>{
             status:1,
             scores:1,
             comments:1
-        }).sort({status:1}).populate({path:'student', select:['name', 'regNo', 'dept', 'section', 'gd_scores','gd_total', 
+        }).sort({status:1,createdAt:1}).populate({path:'student', select:['name', 'regNo', 'dept', 'section', 'gd_scores','gd_total', 
             'aptitude_scores','aptitude_total','resumeFile']})
 
         if(!interviews){

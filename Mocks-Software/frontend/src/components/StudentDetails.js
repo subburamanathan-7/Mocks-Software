@@ -37,11 +37,11 @@ function StudentDetails() {
     const params = useParams()
     let parameter = params.id;
     parameter = parameter.substring(1,parameter.length);
-
+    const name = 'student'
     const getStudentQuery  = useQuery({
         queryKey:['student',parameter],
         queryFn: ()=>{
-            return(getStudent(parameter, sessionStorage.getItem('user')))
+            return(getStudent(parameter,sessionStorage.getItem('user')))
         },
         enabled:!!parameter,
         refetchOnMount:true,

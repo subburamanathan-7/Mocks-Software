@@ -65,6 +65,8 @@ function InterviewerDashboard() {
     else if(listInterviewsQuery.isFetched){
         content = listInterviewsQuery.data;
 
+
+        
         content.sort(function(a, b) {
             let keyA = new String(a.status),
                 keyB = new String(b.status);
@@ -139,6 +141,7 @@ function InterviewerDashboard() {
             }
         })
     }
+    
     //Get User
     const getUserQuery = useQuery({
         queryKey:['user',sessionStorage.getItem('interviewer')],

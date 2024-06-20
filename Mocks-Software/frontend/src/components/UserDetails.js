@@ -93,7 +93,7 @@ function UserDetails() {
                         }}></i>
                     ):('Pending')} </td>
                 </tr> 
-            )
+            ) 
         })
     }
 

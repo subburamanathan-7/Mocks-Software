@@ -8,6 +8,7 @@ import AModal  from './AModal';
 import AddUserDialog from "./AddUserDialog";
 import ConnectDialog from "./ConnectDialog";
 import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 function AdminUsers() {
@@ -44,7 +45,6 @@ function AdminUsers() {
     else if(listUsersQuery.isFetched){
         content = listUsersQuery.data;
         // console.log(content)
-
         content = content.map((user)=>{
             if(user.role===currentUser){
                 if(user.role==='Incharge'){
@@ -67,18 +67,18 @@ function AdminUsers() {
                             <td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{user.companyName?user.companyName:''}</td>
                             <td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{user.incharge?user.incharge.name:''}</td>
                             <td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>
-                                <button onClick={()=>{navigate(`/adashboard/users/user/:${user._id}`)}}
-                                className="bg-blue text-white  px-6 py-2 hover:scale-95 duration-150">View</button>
+                                {/* <button onClick={()=>{navigate(`/user/:${user._id}`)}} */}
+                                <NavLink to={`/user/:${user._id}`}>
+                                    View
+                                </NavLink>
+                                {/* className="bg-blue text-white  px-6 py-2 hover:scale-95 duration-150">View</button> */}
                             </td>
                         </tr>
                     )
-
                 }
-                
             }
         })
     }
-
     return (
         <>
         	<DashNavbar/>

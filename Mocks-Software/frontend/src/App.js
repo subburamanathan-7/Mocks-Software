@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, createBrowserRouter,RouterProvider} from 'react-router-dom';
 
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -17,11 +17,58 @@ import AdminStudents from './components/AdminStudents';
 import StudentDetails from './components/StudentDetails';
 import FileUpload from './components/FileUpload';
 
+const router = createBrowserRouter([
+	{
+		path:"/",
+		element:<Home/>
+	},
+	{
+		path:"/ilogin",
+		element:<InterviewerLogin/>
+	},
+	{
+		path:"/vlogin",
+		element:<InchargeLogin/>
+	},
+	{
+		path:"/alogin",
+		element:<AdminLogin/>
+	},
+	{
+		path:"/adashboard",
+		element:<AdminDashboard/>
+	},
+	{
+		path:"/users",
+		element:<AdminUsers/>
+	},
+	{
+		path:"/students",
+		element:<AdminStudents/>
+	},
+	{
+		path:"/user/:id",
+		element:<UserDetails/>
+	},
+	{
+		path:"/student/:id",
+		element:<StudentDetails/>
+	},
+	{
+		path:"/idashboard",
+		element:<InterviewerDashboard/>
+	},
+	{
+		path:"/vdashboard",
+		element:<InchargeDashboard/>
+	},
+
+])
 
 export function App() {
 	return (
 		<>
-			<Router>
+			{/* <Router>
 				<Routes>
 					<Route path='/' element={<Home/>}/>
 					<Route path='/ilogin' element={<InterviewerLogin/>}/>
@@ -29,11 +76,11 @@ export function App() {
 					<Route path='/alogin' element={<AdminLogin/>}/>
 					<Route path='/adashboard' element={<AdminDashboard/>}/>
 					
-					<Route path='/adashboard/users' element={<AdminUsers/>}/>
-					<Route path='/adashboard/users/user/:id' element={<UserDetails/>}/>
+					<Route path='/users' element={<AdminUsers/>}/>
+					<Route path='/user/:id' element={<UserDetails/>}/>
 
-					<Route path='/adashboard/students' element={<AdminStudents/>}/>
-					<Route path='/adashboard/students/student/:id' element={<StudentDetails/>}/>
+					<Route path='/students' element={<AdminStudents/>}/>
+					<Route path='/student/:id' element={<StudentDetails/>}/>
 
 					<Route path='/idashboard' element={<InterviewerDashboard/>}/>
 					<Route path='/vdashboard' element={<InchargeDashboard/>}/>
@@ -42,7 +89,9 @@ export function App() {
 
 
 				</Routes>
-			</Router>
+			</Router> */}
+
+			<RouterProvider router={router} />
 			<Toaster toastOptions={{
 					success: {
 						style: {

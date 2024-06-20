@@ -13,7 +13,7 @@ function ReportGenerator({interviewDetails,interviewer,onClose}) {
        
         doc.html(document.querySelector("#content"),{
             callback:function(pdf){
-                pdf.save(`report-${interviewDetails.student.name}-${interviewer.name}.pdf`)
+                pdf.save(`report-${interviewDetails.student.name}-${interviewer.name}-${interviewer.companyName}.pdf`)
             }
         })
     }

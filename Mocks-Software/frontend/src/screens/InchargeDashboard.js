@@ -220,7 +220,7 @@ function InchargeDashboard() {
                         </div>
 
                         <div className='overflow-auto rounded-lg shadow-md my-[2%]'>
-                            <table className='cursor-default w-full'>
+                            <table className='cursor-default '>
                                 <thead className=''>
                                     <tr className='py-[5%] text-lg font-semibold '>
                                         <th className='p-2 tracking-wide text-center'>SNO</th>

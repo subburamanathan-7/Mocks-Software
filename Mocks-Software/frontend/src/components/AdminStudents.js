@@ -62,7 +62,7 @@ function AdminStudents() {
 						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.gd_total===-1?('AB'):(student.gd_total+'/50')}</td>
 						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.interviewCount}</td>
 						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap'>
-							<button  onClick={()=>{navigate(`/adashboard/students/student/:${student._id}`)}}
+							<button  onClick={()=>{navigate(`/student/:${student._id}`)}}
 							className=' bg-blue text-white py-1 px-5 hover:bg-opacity-75 duration-250'>View</button>
 						</td>
 					</tr>
@@ -79,7 +79,7 @@ function AdminStudents() {
 						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.gd_total===-1?('AB'):(student.gd_total+'/50')}</td>
 						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap '>{student.interviewCount}</td>
 						<td className='p-2 text-sm tracking-wide text-center border border-gray whitespace-nowrap'>
-							<button onClick={()=>{navigate(`/adashboard/students/student/:${student._id}`)}}
+							<button onClick={()=>{navigate(`/student/:${student._id}`)}}
 							className=' bg-blue text-white py-1 px-5 hover:bg-opacity-75 duration-250'>View</button></td>
 					</tr>
 				)
@@ -107,7 +107,7 @@ function AdminStudents() {
 								<option value="ADS">AI & DS</option>
 								<option value="AUT">Automobile Engineering</option>
 								<option value="BIO">Biotechnology</option>
-								<option value="CHM">Chemical Engineering</option>
+								<option value="CHE">Chemical Engineering</option>
 								<option value="CIV">Civil Engineering</option>
 								<option value="CSE">Computer Science Engineering</option>
 								<option value="ECE">Electronics & Communication Engineering</option>

@@ -25,7 +25,7 @@ function AdminLogin() {
             toast.success(`Welcome ${data.name}`)
             setButtonState(false)
            
-            navigate('/adashboard')
+            navigate('/users')
         },
         onError:(message)=>{
             toast.error('Invalid Credentials')   

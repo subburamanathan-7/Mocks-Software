@@ -29,14 +29,14 @@ function DashNavbar() {
                 {
                   sessionStorage.getItem('role')==='Admin'?(
                     <div className='mr-2'>
-                      <button className={` ${currentRoute.includes('users')?'text-blue':'text-gray hover:underline hover:decoration-2'} uppercase px-4 py-2 `} onClick={()=>navigate('/adashboard/users')}>users</button>
+                      <button className={` ${currentRoute.includes('users')?'text-blue':'text-gray hover:underline hover:decoration-2'} uppercase px-4 py-2 `} onClick={()=>navigate('/users')}>users</button>
                     </div>
                   ):(<></>)
 					      }
 					      {
                     sessionStorage.getItem('role')==='Admin'?(
                     <div className='mr-2'>
-                      <button className={`${currentRoute.includes('students')?'text-blue':'text-gray hover:underline hover:decoration-2'} uppercase px-4 py-2 `} onClick={()=>navigate('/adashboard/students')}>students</button>
+                      <button className={`${currentRoute.includes('students')?'text-blue':'text-gray hover:underline hover:decoration-2'} uppercase px-4 py-2 `} onClick={()=>navigate('/students')}>students</button>
                     </div>
                     ):(<></>)
                 }
